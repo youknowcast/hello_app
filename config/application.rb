@@ -11,9 +11,8 @@ module HelloApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-    conf = YAML.load_file(Rails.root.join(".myconfig"))
-    p conf["myconfig"]["whitelisted_ips"]
     unless Rails.env.production?
+      conf = YAML.load_file(Rails.root.join(".myconfig"))
       config.web_console.whitelisted_ips = conf["myconfig"]["whitelisted_ips"]
     end
 
